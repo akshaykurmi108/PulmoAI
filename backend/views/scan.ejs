@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Upload Scan</title>
+    <link rel="stylesheet" href="scan.css">
+</head>
+
+<body>
+
+    <div id="notification"></div>
+
+    <script src="scan.js"></script>
+
+    <header>
+        <div class="navbar">
+
+            <div class="logo">
+                <img src="/images/logo.jpg" alt="PulmoAi">
+                <h2>PulmoAi</h2>
+            </div>
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="add-patient.html">New Patient</a></li>
+                <li><a href="patientlist.html">Patient List</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="settings.html">Setting</a></li>
+            </ul>
+
+           <button class="login-btn"><a href="/doctorprofile">My Profile</a></button>
+
+        </div>
+    </header>
+
+
+   <section class="upload-container">
+
+    <h1>Upload Patient Scan</h1>
+
+    <div class="upload-box">
+
+     <form onsubmit="event.preventDefault(); uploadScan();" enctype="multipart/form-data">
+  <label>Patient ID</label>
+  <input type="text" name="patientId" placeholder="Enter Patient ID">
+
+  <label>Select Scan Type</label>
+  <select name="scanType">
+    <option>X-Ray</option>
+  </select>
+
+  <label>Upload Scan Image</label>
+  <input type="file" name="file" id="scanFile" accept="image/*" required onchange="previewScan(event)">
+  <img id="scanPreview" style="display:none; width:200px; margin-top:10px;">
+  <br><br>
+  <button type="submit">Upload & Scan</button>
+</form>
+
+
+        <button onclick="removeFile()">Remove</button>
+
+        <!-- PROGRESS -->
+        <div class="progress-bar">
+            <div id="uploadProgress"></div>
+        </div>
+
+        <!-- LOADER -->
+        <div id="aiLoader" style="display:none">
+            Analyzing Lung Scan...
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="result-section">
+
+    <h2>AI Analysis Result</h2>
+
+    <div class="result-box">
+
+        <p id="finding"><b>Finding:</b> Waiting...</p>
+
+        <p id="probability"><b>Probability:</b> Waiting...</p>
+
+        <p id="risk"><b>Risk Level:</b> Waiting...</p>
+
+        <p id="diagnosis"><b>Suggested Diagnosis:</b> Waiting...</p>
+
+    </div>
+
+</section>
+
+</body>
+
+</html>

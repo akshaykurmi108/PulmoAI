@@ -1,0 +1,16 @@
+# Python virtual environment
+venv/
+
+# Node.js dependencies
+node_modules/
+
+# Large binaries
+*.dll
+*.so
+*.exe
+
+# Logs
+*.log
+
+# Environment variables
+.env
